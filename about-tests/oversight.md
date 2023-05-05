@@ -1,5 +1,12 @@
 # Oversights encountered when writing tests 
 
+<!--toc:start-->
+- [Oversights encountered when writing tests](#oversights-encountered-when-writing-tests)
+  - [Didn't Test the most obvious](#didnt-test-the-most-obvious)
+  - [Write unit test as if writing a library](#write-unit-test-as-if-writing-a-library)
+  - [False sense of correctness](#false-sense-of-correctness)
+<!--toc:end-->
+
 ## Didn't Test the most obvious
 Sometimes I write unit-tests starting with edge cases when the regular behavior is very unlikely to go wrong. And then it will be exactly what goes wrong. 
 
