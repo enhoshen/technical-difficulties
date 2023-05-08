@@ -29,3 +29,17 @@ setlocal mouse=
 " setting it back after you're done
 setlocal mouse=nvi
 ```
+
+## Initialization that you don't want to put inside init file
+### case study
+There may be some settings you don't want to put inside your init file, if they are local to the machine you're using, you may want to put them somewhere else.
+
+### solution
+Files under the config path (see `:help standard-path`) are automatically sourced, so we can put a machine-specific script as plugin under `${HOME}/.config/nvim/plugin/<machine-specific>.vim
+
+### example
+```vim
+" in ~/.config/nvim/plugin/my-machine.vim
+" set the python provider program for this machine
+let g:python3_host_prog = "/opt/rh/rh-python36/root/usr/bin/python3.6"
+```
