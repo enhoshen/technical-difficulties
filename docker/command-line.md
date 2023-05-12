@@ -1,5 +1,10 @@
 # Docker command line 
 
+<!--toc:start-->
+- [Docker command line](#docker-command-line)
+  - [Interactive with a shell in container](#interactive-with-a-shell-in-container)
+<!--toc:end-->
+
 ## Interactive with a shell in container
 A container with `CMD` or `ENTRYPOINT` will serve as an executable. If trying to run a shell and in detached mode with `docker run -d`, the shell will immediately **returns** and the detached container stops as designed.  
 > [docker run reference](https://docs.docker.com/engine/reference/run/#detached--d)  
