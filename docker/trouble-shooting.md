@@ -1,2 +1,0 @@
-# Docker trouble shooting
-

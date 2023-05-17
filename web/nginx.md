@@ -1,6 +1,6 @@
 # All about nginx
 
-## Trouble-shooting
+## Troubleshooting
 
 ### Failed (13: Permission denied)
 For the following config 

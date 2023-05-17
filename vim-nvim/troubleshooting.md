@@ -1,6 +1,6 @@
-# Trouble shooting in vim/nvim
+# Troubleshooting in vim/nvim
 <!--toc:start-->
-- [Trouble shooting in vim/nvim](#trouble-shooting-in-vimnvim)
+- [Troubleshooting in vim/nvim](#trouble-shooting-in-vimnvim)
   - [`:help` cannot locate document for plugin](#help-cannot-locate-document-for-plugin)
 <!--toc:end-->
 
