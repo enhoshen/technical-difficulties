@@ -1,5 +1,14 @@
 # All about nginx
 
+<!--toc:start-->
+- [All about nginx](#all-about-nginx)
+  - [Troubleshooting](#troubleshooting)
+    - [Failed (13: Permission denied)](#failed-13-permission-denied)
+      - [Solution](#solution)
+    - [Thrown off by redirect](#thrown-off-by-redirect)
+      - [Solution](#solution)
+<!--toc:end-->
+
 ## Troubleshooting
 
 ### Failed (13: Permission denied)

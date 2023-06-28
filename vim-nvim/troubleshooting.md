@@ -1,10 +1,18 @@
-# Troubleshooting in vim/nvim
+# Troubleshooting in vim and nvim
+
 <!--toc:start-->
-- [Troubleshooting in vim/nvim](#trouble-shooting-in-vimnvim)
-  - [`:help` cannot locate document for plugin](#help-cannot-locate-document-for-plugin)
+- [Troubleshooting in vim and nvim](#troubleshooting-in-vim-and-nvim)
+    - [case study](#case-study)
+    - [solution](#solution)
+  - [Can't copy text in windows terminal using mouse](#cant-copy-text-in-windows-terminal-using-mouse)
+    - [case study](#case-study)
+    - [solution](#solution)
+  - [Initialization that you don't want to put inside init file](#initialization-that-you-dont-want-to-put-inside-init-file)
+    - [case study](#case-study)
+    - [solution](#solution)
+    - [example](#example)
 <!--toc:end-->
 
-## `:help` cannot locate document for plugin
 ### case study
 Not sure if intended, `:help` cannot locate documentation for `packer` plugin.
 
