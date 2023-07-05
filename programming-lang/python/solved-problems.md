@@ -82,3 +82,30 @@ class Bar:
 ```
 Now, the `cls_attr` of `Base` will not be undesirably altered by the classmethod
 decorator of the subclass `Foo`.
+
+## Regsiter class as factory method in class definition with classmethod decorator
+```python
+class Foo:
+    factory = None 
+
+    def __init__(self):
+        self.register_objects()
+
+    @classmethod
+    def register_factory(cls, wrapped: Callable):
+        if cls.factory is None:
+            cls.factory = []
+        cls.factory.append(wrapped)
+
+    def register_objects(self, *args, **kwargs) -> None:
+        self.object = [fac(*args, **kwargs) for fac in self.factory]
+
+@Foo.register_factory
+class Factory:
+    def __init__(*args, **kwargs):
+        ...
+
+@Foo.register_factory
+def factory_func(*args, **kwargs):
+    ...
+```
