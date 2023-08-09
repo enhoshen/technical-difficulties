@@ -14,7 +14,7 @@
 - [Networking]()
     - [Ssh](networking/ssh.md)
     - [Terminology](networking/terminology.md)
-- [Programming Lang](programming-lang/README.md)
+- [Programming Lang]()
     - [Python]()
         - [Solved Problems](programming-lang/python/solved-problems.md)
         - [Troubleshooting](programming-lang/python/troubleshooting.md)
