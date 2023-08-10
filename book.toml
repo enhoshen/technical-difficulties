@@ -6,6 +6,8 @@ src = "./"
 title = "Technical-Difficulties"
 [build]
 create-missing = false
+[output.html]
+default-theme = "Navy"
 [output.html.fold]
 enable = true
 level = 1
