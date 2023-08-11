@@ -51,3 +51,19 @@ Files under the config path (see `:help standard-path`) are automatically source
 " set the python provider program for this machine
 let g:python3_host_prog = "/opt/rh/rh-python36/root/usr/bin/python3.6"
 ```
+
+## Script doesn't take effect automatically, but you can use them directly
+When writing `autoload` scripts, updating `.vimrc`/`init.lua`, if the scripts don't take effect, But running the content of a script or source the script manually work, check the obvious: is the script **actually run**?
+* Maybe print out some message in the script
+* Check the script is in the runtime path
+
+I encountered this problem since my symbolic link to the vim config is broken:
+```
+# expected
+~/.vim -> ~/dotfiles/.vim
+# actually
+~/.vim
+    .vim -> ~/dotfiles/.vim
+```
+This happens because if `.vim` folder doesn't exist and was created by vim first launch, afterward doing `ln -s ~/dotfiles/.vim ~/.vim` will only create a symbolic link under the existing `~/.vim` folder.
+Now every updates put into `~/dotfiles/.vim` will not take effect obviously, the updated scripts simply will not be sourced.
