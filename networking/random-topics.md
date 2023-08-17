@@ -5,7 +5,7 @@
   - [How does `cheat.sh` detects user being in a terminal or browser?](#how-does-cheatsh-detects-user-being-in-a-terminal-or-browser)
 <!--toc:end-->
 
-## How does `cheat.sh` detects user being in a terminal or browser?
+## How does `cheat.sh` detect user being in a terminal or browser?
 ```shell
 # output the response from the curl request
 # You will see response is formatted for terminal
@@ -17,8 +17,8 @@ $ curl cheat.sh/printf -o out.txt
 #[38;5;246;03m# Format and print data[39;00m
 ```
 If in a browser, examining the dev tool shows you the response is a html document.
-This is done by the field `User-Agent` in http header.
-
+This is done by the checking the field `User-Agent` in http header.
+By running curl with verbose option set:
 ```shell
 # run curl with verbose option
 curl -v cheat.sh/printf
