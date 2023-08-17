@@ -85,18 +85,21 @@ and it passes, it gives a false sense of confidence for the design, which someti
 # testing something irrelevant
 def foo(mutable_list: List) -> None:
     mutable_list.append('end')
+
 def test_foo():
     # this test passes, so what?
     assert foo([]) == None
+
 # testing something that is never going to happen
 def not_gonna_happen(mutable_object):
-    mutable_object = 'state changed'
-    return mutable_object
+    mutable_object[0] = 'state changed'
+
 def test_foo():
-    mutable_object = 'initial state'
+    mutable_object = ['initial state']
     # this test passes, but it doesn't reflect the # behavior of
     # the design under test, then why do it?
-    assert not_gonna_happen(mutable_object) == 'state changed'
+    not_gonna_happen(mutable_object)
+    assert mutable_object == ['state changed']
 ```
 
 

@@ -1,7 +1,5 @@
 # Problem encountered and solved in Python
 
-## Unwanted sharing of mutable class attributes among base and derived classes
-
 ## Shareing attributes with both getattr and getattribute 
 
 ## Descriptor as decorator to achieve classmethod as decorator that alters class attribute
@@ -53,7 +51,8 @@ class Bar(Yield):
 ```
 Now there is no error, but you can see that Foo is still not referenced
 in `wrap`, meaning that the `cls` of `cls.cls_attr` is from the `Base` class,
-thus breaking all the subclasses.  
+thus breaking all the subclasses, unwanted sharing of mutable class attributes
+among base and derived classes.
 
 Solution is to write a `Descriptor` class just like `@classmethod`.
 ```python
