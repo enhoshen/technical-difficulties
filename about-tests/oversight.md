@@ -3,8 +3,15 @@
 <!--toc:start-->
 - [Oversights encountered when writing tests](#oversights-encountered-when-writing-tests)
   - [Didn't Test the most obvious](#didnt-test-the-most-obvious)
+    - [In short](#in-short)
+    - [example](#example)
   - [Write unit test as if writing a library](#write-unit-test-as-if-writing-a-library)
+    - [In short](#in-short)
+    - [example](#example)
   - [False sense of correctness](#false-sense-of-correctness)
+    - [In short](#in-short)
+    - [example](#example)
+  - [Writing Global module/class/state changing side effects tests](#writing-global-moduleclassstate-changing-side-effects-tests)
 <!--toc:end-->
 
 ## Didn't Test the most obvious
@@ -100,6 +107,34 @@ def test_foo():
     # the design under test, then why do it?
     not_gonna_happen(mutable_object)
     assert mutable_object == ['state changed']
+```
+
+## Writing Global module/class/state changing side effects tests
+Even if test framework does clean up for us, change module, class, global
+states, producing side effect should be avoided at all cost. It is very
+hard to locate error when tests have side effect, the results may be hard
+to reproducible because you need to run the tests in certain order, where
+side effect producing test must be run first. This also shows us how global
+state, singleton etc. are generally avoided.
+```python
+class Base:
+    state = 1234
+    @classmethod
+    def state_change(cls):
+        cls.state = 5678
+
+class TestBase:
+    def test_change_state(self):
+        Base.state_change()
+
+class Mock(Base):
+    pass
+
+class TestDerived:
+    def test_state(self):
+        # unexpected 5678, when global state is changed somewhere else it is 
+        # very hard to locate
+        assert Mock.state == 1234
 ```
 
 
