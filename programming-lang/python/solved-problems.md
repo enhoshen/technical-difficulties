@@ -1,5 +1,13 @@
 # Problem encountered and solved in Python
 
+<!--toc:start-->
+- [Problem encountered and solved in Python](#problem-encountered-and-solved-in-python)
+  - [Shareing attributes with both getattr and getattribute](#shareing-attributes-with-both-getattr-and-getattribute)
+  - [Descriptor as decorator to achieve classmethod as decorator that alters class attribute](#descriptor-as-decorator-to-achieve-classmethod-as-decorator-that-alters-class-attribute)
+  - [Regsiter class as factory method in class definition with classmethod decorator](#regsiter-class-as-factory-method-in-class-definition-with-classmethod-decorator)
+  - [Don't use empty list as default argument](#dont-use-empty-list-as-default-argument)
+<!--toc:end-->
+
 ## Shareing attributes with both getattr and getattribute 
 
 ## Descriptor as decorator to achieve classmethod as decorator that alters class attribute
@@ -107,4 +115,30 @@ class Factory:
 @Foo.register_factory
 def factory_func(*args, **kwargs):
     ...
+```
+
+## Don't use empty list as default argument
+All instances will reference to the same list object as the argument,
+if it is directly assigned to an attribute, the attribute points to
+the same list across all instances, any changes to the list will be
+shared across all instances.
+This is mentioned specifically in the
+[offical doc](https://docs.python.org/3/reference/compound_stmts.html#function-definitions):
+> Default parameter values are evaluated from left to right when the
+function definition is executed
+```python
+class Foo:
+    def __init__(self, l=[]):
+        self.l = l
+a, b = Foo(), Foo()
+# True
+a.l is b.l
+```
+We know what to do: use `None` as default arguments
+```python
+class Foo:
+    def __init__(self, l=None):
+    self.l = l
+    if l is None:
+        self.l = []
 ```
