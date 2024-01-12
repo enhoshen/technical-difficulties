@@ -31,3 +31,25 @@
     ```
     grant permission with sudo of the working directory:
     `sudo chmod -R 777 <package folder>`
+
+* test oversight: test not only parameter on certain range, but also
+ the boundary, obviously.
+    ```python
+    # test on certain numeric ranges
+    assert floor(3.4) == 3
+    assert floor(3.6) == 3
+    # but also the boundaries, even if it seems to be trivial
+    assert floor(3.0) == 3
+    ```
+
+* In tests, assert statement in a function may not be run, this must be caught
+  if the function one way or another, a simple way:
+    ```python
+    # Pass a mutable object to the function that may not finish
+    async def not_run(result: List):
+        assert result == [1234]
+        result.append(5678)
+    asyncio.run(not_run())
+    # check OUTSIDE of the function it mutate the result
+    assert result == [1234, 5678]
+    ```
