@@ -53,3 +53,44 @@
     # check OUTSIDE of the function it mutate the result
     assert result == [1234, 5678]
     ```
+
+* gitlab "remote: you are not allowed to upload code, fatal: unable to access <url>: The requested URL returned error: 403"
+  when gitlab.credential.helper is set to store, user/passwd will be changed. I
+  use something like `pip install https://<user>:<passwd>@<url>, and the credential
+  is obscurely changed; specifically I was using a deploy token without write
+  permission, thus the message
+
+
+* connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE VERIFY 9 Y_ FAILED] certificate verify failed: self signed certificate
+  for the command `python -m pip install https://<repo url>`. So we know that for pip
+  to directly install from a repo, add `git+` before the url, it's not a problem
+  with SSL, the error message may lead to wrong debug direction
+
+* for pip, in cli or in requirements.txt, specify user/passwd with the following
+  syntax:
+  `python -m pip install git+https://<user>:<passwd>@<repo url>.git@<commit/branch>`
+  
+* convert __iter__ to __await__
+
+* git show-ref,
+    warning: refname 'HEAD' is ambiguous.warning: redirecting to https://192.168.1.139:10443/chip/gzsim.git/
+    There is no tracking information for the current branch.
+    Please specify which branch you want to merge with.
+    See git-pull(1) for details.
+
+        git pull <remote> <branch>
+
+    If you wish to set tracking information for this branch you can do so with:
+    git branch --set-upstream-to=origin/<branch> develop
+* cicd install package hosted locally:
+    setup deploy token from the project settings, and use it as a user password
+    pair for authentication, then in requirements.txt
+    ```txt
+    git+https://deploy-token:${DEPLOY_TOKEN}@{repo host url}/{repo}
+    ```
+
+* Add local location as remote: local remote
+    as simple as
+    ```shell
+    git remote add <NAME> <PATH>
+    ```
