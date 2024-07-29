@@ -1,5 +1,6 @@
 # Technical-Difficulties
 
+- [Todo](todo.md)
 - [About Tests]()
     - [Oversight](about-tests/oversight.md)
     - [Troubleshooting](about-tests/troubleshooting.md)
@@ -22,9 +23,12 @@
         - [Solved Problems](programming-lang/python/solved-problems.md)
         - [Troubleshooting](programming-lang/python/troubleshooting.md)
 - [Resource]()
+    - [Ic Design](resource/ic-design.md)
+    - [Programming Lang](resource/programming-lang.md)
     - [Self Host](resource/self-host.md)
 - [Vim Nvim]()
     - [Lsp](vim-nvim/lsp.md)
+    - [Tips](vim-nvim/tips.md)
     - [Troubleshooting](vim-nvim/troubleshooting.md)
 - [Web]()
     - [Nginx](web/nginx.md)
