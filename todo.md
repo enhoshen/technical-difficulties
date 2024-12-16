@@ -94,3 +94,76 @@
     ```shell
     git remote add <NAME> <PATH>
     ```
+* shift-I in vim
+* git show file from commit: `git show branch:file`
+* git rebase but keep the branch:
+    just create a new branch from the branch and rebase it:
+    ```
+    # on A, to be rebase onto B
+    git branch -b rebase/A
+    git checkout rebase/A
+    git rebase B
+    ```
+* Monad like application for callable:
+    # instead of nested calls
+    ```
+    a(
+        b(
+            c(
+                d(
+                    data
+                )
+            )
+        )
+    )
+    # First wrap the data in a Chain object
+    class Chain
+        def call(self, func: Callable):
+            return Chain(func(self.data))
+    # then we can use builder pattern when calling
+    # a chain of callables
+    for t in transforms:
+        result = Chain(data)
+            .call(a)
+            .call(b)
+            .call(c)
+            .call(d)
+            .data
+        .data
+    ```
+* Find a way around explicitly creating all combinations
+    Say we have a callable chain
+    ```python
+    class Chain:
+        foo: callable
+        bar: callable
+        def __call__(self, data):
+            return bar(foo(data))
+    ```
+    This is a product type, the number of combinations it can have
+    = (# of foo) * (# of bar)  
+    In this case, `Chain` wouldn't be a great design if all combinations
+    will be used.
+    ```python
+    # You have to create the instances for all combinations
+    for f in foos:
+        for b in bars:
+            chains.append(chain(f,b))
+    # But when you use them, you still have to locate the combination you
+    # need, this will be the same loop used for Chain creation
+
+    # two loops that cannot be combined
+    for f in foos:
+        # previously created chain really not make things any easier
+        chain = chains.locate(f,BAR)
+        iterate_over_foo.append(chain(data))
+    for b in bars:
+        chain = chains.locate(FOO,b)
+        iterate_over_bar.append(chain(data))
+
+    # so instead just use the components explicitly, separately
+    for f in foos:
+        iterate_over_foo.append(BAR(f(data)))
+    for b in bars:
+        iterate_over_bar.append(b(FOO(data))
+    ```
