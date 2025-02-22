@@ -72,6 +72,7 @@
   
 * convert __iter__ to __await__
 
+
 * git show-ref,
     warning: refname 'HEAD' is ambiguous.warning: redirecting to https://192.168.1.139:10443/chip/gzsim.git/
     There is no tracking information for the current branch.
@@ -167,3 +168,50 @@
     for b in bars:
         iterate_over_bar.append(b(FOO(data))
     ```
+
+* check vpn split tunneling,
+On windows:
+
+```shell
+# check ip trace that doesn't go through the vpn
+$tracert facebook.com
+Tracing route to facebook.com [31.13.87.36]
+over a maximum of 30 hops:
+
+  1    <1 ms    <1 ms    <1 ms  192.168.1.1
+  2     2 ms     2 ms     2 ms  192.168.0.1
+  ...
+
+# and then trace the ip that should go through the vpn
+$tracert 192.168.0.128
+
+Tracing route to <host name> [192.168.3.121]
+over a maximum of 30 hops:
+
+  1    18 ms    13 ms    12 ms  MY-PC [123.123.123.123]
+  2    14 ms    15 ms    13 ms  <remote host> [192.168.0.128]
+
+# And check vpn settings
+# we can see that the second ip goes through the ip address of the VPN
+# first
+$ipconfig /all
+
+Windows IP Configuration
+
+   Host Name . . . . . . . . . . . . : MY-PC
+   Primary Dns Suffix  . . . . . . . :
+   Node Type . . . . . . . . . . . . : Hybrid
+   IP Routing Enabled. . . . . . . . : No
+   WINS Proxy Enabled. . . . . . . . : No
+
+Ethernet adapter 乙太網路 3:
+
+   Connection-specific DNS Suffix  . :
+   Description . . . . . . . . . . . : <VPN description>
+   Physical Address. . . . . . . . . :
+   DHCP Enabled. . . . . . . . . . . :
+   Autoconfiguration Enabled . . . . : 
+   Link-local IPv6 Address . . . . . : ...
+   IPv4 Address. . . . . . . . . . . : 123.123.123.123(Preferred)
+   ...
+```
