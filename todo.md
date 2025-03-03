@@ -215,3 +215,10 @@ Ethernet adapter 乙太網路 3:
    IPv4 Address. . . . . . . . . . . : 123.123.123.123(Preferred)
    ...
 ```
+
+* To use nerd font:
+Install the font on the host machine! Say I am ssh-ing from A windows machine,
+install the font on A machine, and change the setting of the A machine terminal.
+In my case, I am using windows terminal, then after installing the font,
+by just clicking on the ttf file, go `Settings > <Profile> > Appearance > Font Face`
+and it's all done.
