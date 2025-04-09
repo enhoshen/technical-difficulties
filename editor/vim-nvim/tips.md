@@ -19,6 +19,25 @@ so do `:lua Snacks.notifier.show_chistory()`
 [ref](https://github.com/LazyVim/LazyVim/discussions/1963#discussioncomment-11274166)
 
 
-## quick lua table debug
+## Lua
+### quick lua table debug
 `:lua =<table>`. Say while checking `conform` plugin's configuration of formattors  
-, do `:lua =require("conform").formattorrs`.
+, do `:lua =require("conform").formattorrs`. see `:help lua=`, it shows you
+that it equals to `vim.print(<expr>)`. We also learn from this that `:lua print()`
+and `:lua vim.print` is different.
+
+For example, when trying to debug an plugin table
+```lua
+local blink = require("blink.cmp")
+-- output:
+-- table: 0x... (some address)
+print(blink)
+-- output:
+--{
+--  accept = <function 1>,
+--  accept_and_enter = <function 2>,
+--  ...
+--}
+vim.print(blink) 
+```
+
