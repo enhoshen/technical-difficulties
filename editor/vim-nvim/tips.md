@@ -4,7 +4,8 @@
 - [Vim/Neovim tips](#vimneovim-tips)
   - [Trying to do some action but in a new tab](#trying-to-do-some-action-but-in-a-new-tab)
   - [Check startup error messages](#check-startup-error-messages)
-  - [quick lua table debug](#quick-lua-table-debug)
+  - [Lua](#lua)
+    - [quick lua table debug](#quick-lua-table-debug)
 <!--toc:end-->
 
 ## Trying to do some action but in a new tab
