@@ -1,4 +1,1 @@
-Everything about programming, especially from experience.
-===
-
-
+# Everything about programming, especially from experience.

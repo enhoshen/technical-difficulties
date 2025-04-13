@@ -1,12 +1,15 @@
 # All about Bash
 
 ## What are these `&&, ||, ;, &`?
+
 When you try to learn about these "operator" you might have a hard time picking the best keyword when searching. They are operators separating lists of command
 
 see section [Lists of Command](https://www.gnu.org/software/bash/manual/html_node/Lists.html)
 
 ## Pattern matching
-Pattern matching is used for filename expansion, or wherever in the documentation the word *PATTERN* comes up (I believe). Let's see a couple of example first.
+
+Pattern matching is used for filename expansion, or wherever in the documentation the word _PATTERN_ comes up (I believe). Let's see a couple of example first.
+
 ```shell
 # in a folder container about-tests/
 ls [[:lower:]]bout-tests # list files under about-tests/
@@ -16,16 +19,20 @@ ls [[:lower:]]bout-tests # list files under about-tests/
 [[ a == ? ]] && echo "match found"
 [[ abc == *([a-z]) ]] && echo "match found"
 ```
+
 The document is actually very clear, but there are some nuance you may very likely overlook and cause your pattern to not work.  
 see section [Filename Expansion::Pattern Matching](https://www.gnu.org/software/bash/manual/html_node/Pattern-Matching.html)
 
 ### mixed with glob
+
 When in combination of glob pattern we are very familiar with, things may not work as expected, if the documentation is not read thoroughly.
-Let's read the document first:  
+Let's read the document first:
+
 > Composite patterns may be formed using one or more of the following sub-patterns:  
-> ?(*pattern-list*) ...  
+> ?(_pattern-list_) ...
 
 This looks and works very much like regex. But watch carefully that the patter-list **must** be enclosed in parentheses.
+
 ```shell
 # This is actually a glob in combination with `[]` pattern matching
 # because the [a-z] is not enclosed in parentheses `()`
@@ -36,19 +43,24 @@ ls *([a-z]).* # matches abc.sh cde.txt etc.
 ```
 
 ### Pattern matching with character classes
-Read carefully for the *character classes* section
+
+Read carefully for the _character classes_ section
 |> Within ‘[’ and ‘]’, character classes can be specified using the syntax [:class:]
+
 ```shell
 # match fails
 [[ a == [:lower:] ]] && echo "mathces"
 # it works enclosed in brackets
 [[ a == [[:lower:]] ]] && echo "mathces"
 ```
+
 However, for whatever reason, the character class `word` doesn't work in zsh (v5.8.1)
+
 ```shell
 # match fails, :word: equals [A-Za-z0-9_]
 [[ a == [:word:] ]] && echo "mathces"
 # use :WORD: instead
 [[ a == [:WORD:] ]] && echo "mathces"
-```  
+```
+
 see [Expansion::Filename-Expansion::Glob operators](https://zsh.sourceforge.io/Doc/Release/Expansion.html#Filename-Expansion) in zsh manual

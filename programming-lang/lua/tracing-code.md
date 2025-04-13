@@ -25,13 +25,13 @@ as "toggle_hidden",
         ["<a-h>"] = { "toggle_hidden", mode = { "i", "n" } },
 ```
 
-I wanted to know want the key maps are actually mapped to, so immedately i go
+I wanted to know what the key maps are actually mapped to, so immediately i go
 for `grep toggle_hidden` under the `snacks` project and the only things come
 up are these keymaps.
 
-So I tried to find definition on `win` (lsp needed), it leads me to the class
+So I tried to find definition on `win` (lsp needed), it led me to the class
 `snacks.picker.win.Config`.
-Also, when using the keymaps, when can do `:verbose map <a-f>`, it shows:
+Also, when using the keymaps, we can do `:verbose map <a-f>`, it shows:
 
 ```
 n  <M-h>       *@<Lua 811: ~/.local/share/nvim/lazy/snacks.nvim/lua/snacks/win.lua:334>
@@ -39,7 +39,7 @@ n  <M-h>       *@<Lua 811: ~/.local/share/nvim/lazy/snacks.nvim/lua/snacks/win.l
 Last set from Lua (run Nvim with -V1 for more details)
 ```
 
-By the actions above I finally pinpoint where the keymaps are actually mapped.
+By the actions above I finally pinpointed where the keymaps are actually mapped.
 
 Heading over to `snacks.win.lua:334`, I now know that `win.action` is what I was
 looking for:
@@ -79,7 +79,7 @@ end
 
 Without debugger, I used `vim.print()` all over the place and found out it will
 not work great with tables. But at least I now know that items in
-`self.opts.actions` are the mapping targets. At the same time I stumble across
+`self.opts.actions` are the mapping targets. At the same time I stumbled across
 a `Snacks.picker` keymap `<a-d>`, mapping to "inspect"
 
 ```lua
@@ -144,11 +144,11 @@ actually mapped to...
 Take home ideas:
 
 - Use `Snacks.debug.inspect` for printing, before I takes the time to learn debugger
-  for lua. Not sure if luadebugger would work well with nvim, since I use nvim dap
+  for lua. Not sure if lua debugger would work well with nvim, since I use nvim dap
   to work with the debugger...
 - Something as simple as this caused me so much trouble boggles me. Tracing code
   in a language that I am not really familiar with can be quite challenging for me,
   but seems like a good exercise to know more about the language.
 - Look for `init.lua` for a module. I trace code from the bottom up, and finally
   get to the top initialize script for the `snacks.config` module. Tracing the
-  code top down gives us thegreater picture quickly.
+  code top down gives us the greater picture quickly.
