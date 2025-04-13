@@ -1,7 +1,7 @@
 # All about Bash
 
 ## What are these `&&, ||, ;, &`?
-When you try to learn about these "operator" you might have a hard time picking the best keyword when searching. They are operators seperating lists of command
+When you try to learn about these "operator" you might have a hard time picking the best keyword when searching. They are operators separating lists of command
 
 see section [Lists of Command](https://www.gnu.org/software/bash/manual/html_node/Lists.html)
 
