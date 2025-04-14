@@ -18,8 +18,9 @@ cursor it is `gf` or `gF`, to open it in a new tab, goes `<Ctrl-W>gF`. See
 
 ## Check startup error messages
 
-With lazyvim installed, those startup messages seems to be handled by Snack.notifier,
-so do `:lua Snacks.notifier.show_chistory()`
+With lazyvim installed, those startup messages seems to be handled by
+`Snacks.notifier`, so do `:lua Snacks.notifier.show_history()`, or with keybind
+`<Leader>n` to open a notification window, setup by `Snacks.picker` by default
 [ref](https://github.com/LazyVim/LazyVim/discussions/1963#discussioncomment-11274166)
 
 ## cmdline-special and expand
