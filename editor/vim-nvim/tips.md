@@ -1,12 +1,14 @@
 # Vim/Neovim tips
 
 <!--toc:start-->
-
 - [Vim/Neovim tips](#vimneovim-tips)
   - [Trying to do some action but in a new tab](#trying-to-do-some-action-but-in-a-new-tab)
   - [Check startup error messages](#check-startup-error-messages)
-  - [Lua](#lua) - [quick lua table debug](#quick-lua-table-debug)
-  <!--toc:end-->
+  - [cmdline-special and expand](#cmdline-special-and-expand)
+  - [Lua](#lua)
+    - [quick lua table debug](#quick-lua-table-debug)
+    - [run vim function in lua code](#run-vim-function-in-lua-code)
+<!--toc:end-->
 
 ## Trying to do some action but in a new tab
 
@@ -19,6 +21,21 @@ cursor it is `gf` or `gF`, to open it in a new tab, goes `<Ctrl-W>gF`. See
 With lazyvim installed, those startup messages seems to be handled by Snack.notifier,
 so do `:lua Snacks.notifier.show_chistory()`
 [ref](https://github.com/LazyVim/LazyVim/discussions/1963#discussioncomment-11274166)
+
+## cmdline-special and expand
+
+Looking at `:help gx` we find that file name under cursor has something to do with <cfile>.
+These special character will be expanded
+
+- when file name are to be expected in ex command
+- when used in function `expand`, like `expand("<cfile>")`
+  let's put cursor under a url like https://www.google.com and type:
+
+```vimscript
+:echo expand("<cfile")
+```
+
+and the url will be printed.
 
 ## Lua
 
@@ -43,4 +60,16 @@ print(blink)
 --  ...
 --}
 vim.print(blink)
+```
+
+### run vim function in lua code
+
+`vim.fn`. staight to the example:
+
+```lua
+function ()
+  -- :let path=expand("<cfile>")
+  path = vim.fn.expand("<cfile>")
+  vim.print(path)
+end
 ```

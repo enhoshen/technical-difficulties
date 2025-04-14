@@ -1,5 +1,11 @@
 # About SSH
 
+<!--toc:start-->
+- [About SSH](#about-ssh)
+  - [Public-key authentication](#public-key-authentication)
+  - [Manage host in `.ssh/config`](#manage-host-in-sshconfig)
+<!--toc:end-->
+
 ## Public-key authentication
 
 User can generate a key pair and upload the public key to a ssh host. If I'm not mistaken, public key is used by the remote host to generate a challenge text for the user to decrypt using the private key, proving that the user has the private key.

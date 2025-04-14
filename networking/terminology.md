@@ -1,5 +1,11 @@
 # Terminologies of networking/telecommunications
 
+<!--toc:start-->
+- [Terminologies of networking/telecommunications](#terminologies-of-networkingtelecommunications)
+  - [Gateway](#gateway)
+  - [Bridge](#bridge)
+<!--toc:end-->
+
 ## Gateway
 
 Hardware or software to allow data flow from one _network to another_. Straight into examples:

@@ -1,10 +1,9 @@
 # Whatever does belong elsewhere about networking goes here
 
 <!--toc:start-->
-
 - [Whatever does belong elsewhere about networking goes here](#whatever-does-belong-elsewhere-about-networking-goes-here)
-  - [How does `cheat.sh` detects user being in a terminal or browser?](#how-does-cheatsh-detects-user-being-in-a-terminal-or-browser)
-  <!--toc:end-->
+  - [How does `cheat.sh` detect user being in a terminal or browser?](#how-does-cheatsh-detect-user-being-in-a-terminal-or-browser)
+<!--toc:end-->
 
 ## How does `cheat.sh` detect user being in a terminal or browser?
 

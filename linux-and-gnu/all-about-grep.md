@@ -1,5 +1,10 @@
 # All about grep
 
+<!--toc:start-->
+- [All about grep](#all-about-grep)
+  - [Exclude pattern using grep negative lookahead/lookbehind](#exclude-pattern-using-grep-negative-lookaheadlookbehind)
+<!--toc:end-->
+
 ## Exclude pattern using grep negative lookahead/lookbehind
 
 When doing file operations like `ls`, one may need to exclude some pattern, an option is to pipe the output to `grep`. In order to do this, negative lookahead is needed. The syntax is availale with option `-P` meaning perl compatiable regex pattern.

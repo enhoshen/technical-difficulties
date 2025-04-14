@@ -2,12 +2,18 @@
 
 <!--toc:start-->
 
-- [Troubleshooting in vim and nvim](#troubleshooting-in-vim-and-nvim) - [case study](#case-study) - [solution](#solution)
-  - [Can't copy text in windows terminal using mouse](#cant-copy-text-in-windows-terminal-using-mouse)
-    - [case study](#case-study)
-    - [solution](#solution)
-  - [Initialization that you don't want to put inside init file](#initialization-that-you-dont-want-to-put-inside-init-file) - [case study](#case-study) - [solution](#solution) - [example](#example)
-  <!--toc:end-->
+- [Troubleshooting in vim and nvim](#troubleshooting-in-vim-and-nvim)
+  - [case study](#case-study)
+  - [solution](#solution)
+- [Can't copy text in windows terminal using mouse](#cant-copy-text-in-windows-terminal-using-mouse)
+  - [case study](#case-study)
+  - [solution](#solution)
+- [Initialization that you don't want to put inside init file](#initialization-that-you-dont-want-to-put-inside-init-file)
+  - [case study](#case-study)
+  - [solution](#solution)
+  - [example](#example)
+- [Script doesn't take effect automatically, but you can use them directly](#script-doesnt-take-effect-automatically-but-you-can-use-them-directly)
+<!--toc:end-->
 
 ### case study
 

@@ -1,5 +1,13 @@
 # All about Bash
 
+<!--toc:start-->
+- [All about Bash](#all-about-bash)
+  - [What are these `&&, ||, ;, &`?](#what-are-these)
+  - [Pattern matching](#pattern-matching)
+    - [mixed with glob](#mixed-with-glob)
+    - [Pattern matching with character classes](#pattern-matching-with-character-classes)
+<!--toc:end-->
+
 ## What are these `&&, ||, ;, &`?
 
 When you try to learn about these "operator" you might have a hard time picking the best keyword when searching. They are operators separating lists of command

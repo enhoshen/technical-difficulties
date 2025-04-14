@@ -1,5 +1,11 @@
 # All about man
 
+<!--toc:start-->
+- [All about man](#all-about-man)
+  - [What does <command>(#) mean in the title of a man page?](#what-does-command-mean-in-the-title-of-a-man-page)
+  - [Where does man search for pages?](#where-does-man-search-for-pages)
+<!--toc:end-->
+
 ## What does <command>(#) mean in the title of a man page?
 
 Let's see the output of `man man`, the manual page of command `man`:

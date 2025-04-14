@@ -1,5 +1,10 @@
 # Utilizing slack
 
+<!--toc:start-->
+- [Utilizing slack](#utilizing-slack)
+  - [Redirect email to a conversion via Slackbot](#redirect-email-to-a-conversion-via-slackbot)
+<!--toc:end-->
+
 ## Redirect email to a conversion via Slackbot
 
 - Get the slack bot forwarding email address: `Preference` -> `Messages & media` -> `Bring emails into Slack` -> copy the address

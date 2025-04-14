@@ -1,10 +1,10 @@
 # Tracing lua code as a begginer
 
 <!--toc:start-->
-
 - [Tracing lua code as a begginer](#tracing-lua-code-as-a-begginer)
   - [Understanding keymapping in `Snacks.picker`](#understanding-keymapping-in-snackspicker)
-  <!--toc:end-->
+<!--toc:end-->
+
 
 ## Understanding keymapping in `Snacks.picker`
 
