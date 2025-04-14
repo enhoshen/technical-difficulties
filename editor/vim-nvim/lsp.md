@@ -1,10 +1,11 @@
 # Language server protocol in vim/nvim
 
 <!--toc:start-->
-
 - [Language server protocol in vim/nvim](#language-server-protocol-in-vimnvim)
-  - [Server specifics](#server-specifics) - [marksman](#marksman) - [Code action](#code-action)
-  <!--toc:end-->
+  - [Server specifics](#server-specifics)
+    - [marksman](#marksman)
+      - [Code action](#code-action)
+<!--toc:end-->
 
 ## Server specifics
 
