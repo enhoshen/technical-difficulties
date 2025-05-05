@@ -40,8 +40,8 @@ I'm specifying the `insecure-registries` option in two places:
 Now, I have to know where the flag is set. I don't have a `/etc/systemd/system/docker.service` set up,
 but clearly there is such config file existing somewhere...
 
-Turns out, if user defined config file is overide default from `/lib/systemd/system/*` (on ubuntu)
-I can also find out by `systemctl status docker.service`
+Turns out, if no user defined config file the default from `/lib/systemd/system/*` (on ubuntu)
+is used. I can also find out about this by `systemctl status docker.service`
 
 ```shell
 ● docker.service - Docker Application Container Engine
