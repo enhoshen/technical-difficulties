@@ -125,7 +125,7 @@ def factory_func(*args, **kwargs):
     ...
 ```
 
-## Don't use empty list as default argument
+## Don't use empty list or any mutable object as default argument
 
 All instances will reference to the same list object as the argument,
 if it is directly assigned to an attribute, the attribute points to
@@ -154,4 +154,23 @@ class Foo:
     self.l = l
     if l is None:
         self.l = []
+```
+
+Be aware, not just list/dict, your user defined classes and their instances
+are no exception. In dataclass this feels intutive to do but to be safe,
+use None.
+
+```python
+# Even if Bar only has immutable attributes
+@dataclass
+class Bar:
+    a: str = ""
+
+class Foo:
+    def __init__(self, arg=Bar()):
+        self.arg = arg
+a, b = Foo(), Foo()
+a.arg.a = "123"
+# True
+assert b.arg.a == "123"
 ```
