@@ -4,6 +4,7 @@
 
 - [The "I don't know where to put them" topics](#the-i-dont-know-where-to-put-them-topics)
   - [The self argument of bound method called by other objects](#the-self-argument-of-bound-method-called-by-other-objects)
+  - [subscription of np array](#subscription-of-np-array)
   <!--toc:end-->
 
 ## The self argument of bound method called by other objects
@@ -51,3 +52,28 @@ So for a bound method, the `self` object is not whatever object calling it, but 
 Overall, I wouldn't recommand doing such questionable attribute manipulation, it may applies to attribute overide in general.
 
 Ref: [Instance methods](https://docs.python.org/3/reference/datamodel.html)
+
+## subscription of np array
+
+Slicing are tuple of slice or int. When we write `a[0, 1, 2:3]`, it equals `a[(0, 1, slice(2,3))]`.
+You might think a list of iterable can be used in place of tuple but not quite:
+
+- unpack arguments: syntax error, subscription (square bracket) does not work like
+  function call
+
+  ```python
+  slicing = [0, 1, slice(2,3)]
+  a[*slicing]
+
+  ```
+
+- list: this is called fancy indexing with list of integer. It also can be a list
+  of booleans acting like a mask
+  ```python
+  a = [[0,1], [2,3]]
+  a[[0, 0]] == [[0,1], [0,1]]
+  ```
+
+```
+
+```

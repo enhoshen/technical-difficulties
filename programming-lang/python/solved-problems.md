@@ -1,13 +1,13 @@
 # Problem encountered and solved in Python
 
 <!--toc:start-->
-
 - [Problem encountered and solved in Python](#problem-encountered-and-solved-in-python)
   - [Shareing attributes with both getattr and getattribute](#shareing-attributes-with-both-getattr-and-getattribute)
   - [Descriptor as decorator to achieve classmethod as decorator that alters class attribute](#descriptor-as-decorator-to-achieve-classmethod-as-decorator-that-alters-class-attribute)
   - [Regsiter class as factory method in class definition with classmethod decorator](#regsiter-class-as-factory-method-in-class-definition-with-classmethod-decorator)
-  - [Don't use empty list as default argument](#dont-use-empty-list-as-default-argument)
-  <!--toc:end-->
+  - [Don't use empty list or any mutable object as default argument](#dont-use-empty-list-or-any-mutable-object-as-default-argument)
+  - [Tree of ndarray](#tree-of-ndarray)
+<!--toc:end-->
 
 ## Shareing attributes with both getattr and getattribute
 
@@ -174,3 +174,71 @@ a.arg.a = "123"
 # True
 assert b.arg.a == "123"
 ```
+
+## Tree of ndarray
+
+requirement:
+
+- Tree of ndarray data
+- each node has data or children
+- get data by path:
+  - `root.foo[0][1].bar`
+  - `root.foo[0][1].bar[2][3].abc`
+  - Slight complex is bar can be a data if it's a leaf of the path, or it can
+    have children like `abc`
+- The return data will be an array with shape of all its ancestor's shape combined
+
+I had two implementation:
+
+- Each node has data and children. Data and each child is
+  ndarray with same shape as the parent node. To calculate slice for each level
+  and selecting either child or data will be more complex.
+
+  ```
+  Node
+  data: ndarray
+  children: Dict[str, Node]
+  ```
+
+  ```python
+  # [][].foo[][].bar
+  # every level of ret is an ndarray, the shape hierarchy is preserved
+  # create ret with the same shape as the slice
+  # each non leaf iteration
+  slice = root.children["foo"][slice]
+  for d, r in zip(slice.flat, ret.flat):
+    # assign each return element an array
+    r = d.children["bar"]
+
+  # leaf iteration
+  # recursively replace element with data array
+  for r in ret.flat:
+    # at leaf, each element will be just node
+    return_array(rr)
+  def return_array(ret):
+    if isinstance(r, Node)
+      r = r.data
+    else:
+      r = return_array(r)
+    return ret
+  ```
+
+  Just a bad implementation, this is just a demonstration of how you organize
+  the shape of ndarray at different level will affect the logic complexity
+
+- Each node has data of ndarray, and children are all single node. This way
+  we only have to check if at leaf node, and directly slice into the data. The
+  drawback is the data has to take on the accumulated shape of all its ancestor,
+  but the logic is way simpler.
+
+  ```
+  [][].foo[][].bar
+  root.children["foo"].children["bar"][slice1][slice2]
+  each data has to take on all ancestors shape
+
+  Node
+  data: Data
+  children: Dict[str, ndarray]
+  ```
+
+  As simple as that, don't even need sample code to understand that.
