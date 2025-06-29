@@ -184,7 +184,7 @@ requirement:
 - get data by path:
   - `root.foo[0][1].bar`
   - `root.foo[0][1].bar[2][3].abc`
-  - Slight complex is bar can be a data if it's a leaf of the path, or it can
+  - Slightly complex is that bar can be a data if it's at the end of the path, or it can
     have children like `abc`
 - The return data will be an array with shape of all its ancestor's shape combined
 
@@ -226,15 +226,15 @@ I had two implementation:
   Just a bad implementation, this is just a demonstration of how you organize
   the shape of ndarray at different level will affect the logic complexity
 
-- Each node has data of ndarray, and children are all single node. This way
-  we only have to check if at leaf node, and directly slice into the data. The
+- Each node has data of ndarray, and child is node. This way
+  we only have to check if at path end, and directly slice into the data. The
   drawback is the data has to take on the accumulated shape of all its ancestor,
   but the logic is way simpler.
 
   ```
   [][].foo[][].bar
   root.children["foo"].children["bar"][slice1][slice2]
-  each data has to take on all ancestors shape
+  each data has to take on all ancestors shape combined
 
   Node
   data: Data

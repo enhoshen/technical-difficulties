@@ -25,18 +25,18 @@ With lazyvim installed, those startup messages seems to be handled by
 
 ## cmdline-special and expand
 
-Looking at `:help gx` we find that file name under cursor has something to do with <cfile>.
+Looking at `:help gx` we find that file name under cursor has something to do with `<cfile>`.
 These special character will be expanded
 
 - when file name are to be expected in ex command
 - when used in function `expand`, like `expand("<cfile>")`
-  let's put cursor under a url like https://www.google.com and type:
+  let's put cursor under a URL like https://www.google.com and type:
 
 ```vimscript
 :echo expand("<cfile")
 ```
 
-and the url will be printed.
+and the URL will be printed.
 
 ## Lua
 
@@ -65,7 +65,7 @@ vim.print(blink)
 
 ### run vim function in lua code
 
-`vim.fn`. staight to the example:
+`vim.fn`. Straight to the example:
 
 ```lua
 function ()
