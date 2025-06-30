@@ -7,7 +7,7 @@
 
 
 ## Mutate non-overlapping part of a struct member
-1.  `cargo new toy`: create a new rust objects
+1. `cargo new toy`: create a new rust project
 2. paste this in `toy/main.rs`
 ```rust
 struct LargeStruct {
@@ -29,6 +29,9 @@ fn observer2(data: &mut [f64; 500]) {
     }
 }
 
+// to hold a reference member, lifetime has to be specific
+// >> https://doc.rust-lang.org/book/ch05-01-defining-structs.html
+// >> https://doc.rust-lang.org/book/ch10-03-lifetime-syntax.html
 struct Monitor<'a> {
     name: String,
     target: &'a LargeStruct
@@ -53,6 +56,7 @@ fn main() {
     observer1(&mut large_struct.data1);
     observer2(&mut large_struct.data2);
 
+    // multiple immutable references to the same object
     let m0 = Monitor{name: "m0".to_string(), target: &large_struct};
     let m1 = Monitor{name: "m1".to_string(), target: &large_struct};
     m0.monitor();
