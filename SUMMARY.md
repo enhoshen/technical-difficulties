@@ -30,6 +30,8 @@
         - [Random Topics](programming-lang/python/random-topics.md)
         - [Solved Problems](programming-lang/python/solved-problems.md)
         - [Troubleshooting](programming-lang/python/troubleshooting.md)
+    - [Rust]()
+        - [Getting Started](programming-lang/rust/getting-started.md)
 - [Resource]()
     - [Ic Design](resource/ic-design.md)
     - [Programming Lang](resource/programming-lang.md)
