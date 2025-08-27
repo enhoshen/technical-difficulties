@@ -323,3 +323,5 @@ Ethernet adapter 乙太網路 3:
   # "lib" are highlighted by grep
   ffmpeg 2>&1 | grep lib
   ```
+
+* vim diffopt: word level diff highlighting

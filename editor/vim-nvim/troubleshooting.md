@@ -1,18 +1,19 @@
 # Troubleshooting in vim and nvim
 
 <!--toc:start-->
-
 - [Troubleshooting in vim and nvim](#troubleshooting-in-vim-and-nvim)
-  - [case study](#case-study)
-  - [solution](#solution)
-- [Can't copy text in windows terminal using mouse](#cant-copy-text-in-windows-terminal-using-mouse)
-  - [case study](#case-study)
-  - [solution](#solution)
-- [Initialization that you don't want to put inside init file](#initialization-that-you-dont-want-to-put-inside-init-file)
-  - [case study](#case-study)
-  - [solution](#solution)
-  - [example](#example)
-- [Script doesn't take effect automatically, but you can use them directly](#script-doesnt-take-effect-automatically-but-you-can-use-them-directly)
+    - [case study](#case-study)
+    - [solution](#solution)
+  - [Can't copy text in windows terminal using mouse](#cant-copy-text-in-windows-terminal-using-mouse)
+    - [case study](#case-study)
+    - [solution](#solution)
+  - [Initialization that you don't want to put inside init file](#initialization-that-you-dont-want-to-put-inside-init-file)
+    - [case study](#case-study)
+    - [solution](#solution)
+    - [example](#example)
+  - [Script doesn't take effect automatically, but you can use them directly](#script-doesnt-take-effect-automatically-but-you-can-use-them-directly)
+  - [Mapping trouble shooting](#mapping-trouble-shooting)
+    - [In terminal mode, have to double tap esc to send esc, otherwise it leaves terminal mode](#in-terminal-mode-have-to-double-tap-esc-to-send-esc-otherwise-it-leaves-terminal-mode)
 <!--toc:end-->
 
 ### case study
@@ -84,3 +85,31 @@ I encountered this problem since my symbolic link to the vim config is broken:
 
 This happens because if `.vim` folder doesn't exist and was created by vim first launch, afterward doing `ln -s ~/dotfiles/.vim ~/.vim` will only create a symbolic link under the existing `~/.vim` folder.
 Now every updates put into `~/dotfiles/.vim` will not take effect obviously, the updated scripts simply will not be sourced.
+
+## Mapping trouble shooting
+
+### In terminal mode, have to double tap esc to send esc, otherwise it leaves terminal mode
+
+Specifically I was trying to send esc to `lazygit`.
+
+1. try `:map`
+2. see `<esc>` mapping by lazyvim
+3. try disable the keymap: add `vim.keymap.del` in my `keymaps/init.lua`
+4. found out `nvim --clean` single tap of esc is properly sent to running program
+5. found out terminal mode mapping has to be checked with `:tmap` not `:map`
+6. remove the `<esc>`/`<C-[>` keymap set myself
+
+With terminal inside `nvim --clean` esc is properly sent to the program with
+one tap. Not sure what causes the this is, tried:
+
+- disable `lazyvim` default keymap for `<esc>`
+
+Instinctively we would check with `:map`, however it actually only shows
+key maps for insert/visual/operator pending(first time learned about this)
+! So to check terminal mode mapping, use `:tmap`, and per usual its output
+is lacking so launch nvim with `nvim -V1` (verbose level 1) to find out where
+I set the keymap myself.
+
+So, I mapped `<esc>`,`<C-[` to `<C-\><C-n>` so of course they
+tell nvim to escape terminal mode. Also they both send the same character
+`^[` so can't set one of them to `<C-\><C-n>` and hope them behave differently.
