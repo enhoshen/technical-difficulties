@@ -325,3 +325,20 @@ Ethernet adapter 乙太網路 3:
   ```
 
 * vim diffopt: word level diff highlighting
+
+* man ffmpeg-codecs
+  EX: To read about `-qscale` when producing webp output, search `libwebp` in
+  `man ffmpeg-codecs`
+
+* vscode + vim extension to show hover: `gh`
+  Beside the keybind, `Ctrl+Shift+P` and search for `Show Hover`, it has a default
+  conflicting key bind `<C-K>` against vim extension.
+
+* vim `:help index`
+
+  - looking for list of keymaps, like it shows that `CTRL-K` is not use in tag
+    `normal-index`
+
+* conditional statement in bash
+  `man bash` then search for `CONDITIONAL EXPRESSIONS` and `Compound Commands`
+* nvim option: `completeopt`
