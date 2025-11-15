@@ -12,6 +12,7 @@
     - prim
     - kruskal
   - loop invariant
+  - Splay tree
 
 - how to find bind doc in bash and bindkey in zsh
 
@@ -342,3 +343,4 @@ Ethernet adapter 乙太網路 3:
 * conditional statement in bash
   `man bash` then search for `CONDITIONAL EXPRESSIONS` and `Compound Commands`
 * nvim option: `completeopt`
+* lnav
