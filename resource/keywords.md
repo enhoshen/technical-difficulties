@@ -5,3 +5,5 @@
 - penpot: design in codes
 - stochastic process
 - Grokking system design
+- ddia: Designing Data-intensive Applications
+- rsicv-dv
