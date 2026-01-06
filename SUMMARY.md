@@ -13,6 +13,8 @@
         - [Lsp](editor/vim-nvim/lsp.md)
         - [Tips](editor/vim-nvim/tips.md)
         - [Troubleshooting](editor/vim-nvim/troubleshooting.md)
+- [Environment Setup]()
+    - [Linux](environment-setup/linux.md)
 - [Git]()
     - [Troubleshooting](git/troubleshooting.md)
 - [Linux and Gnu]()
