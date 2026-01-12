@@ -1,13 +1,15 @@
 # Git repository
 
 <!--toc:start-->
-
 - [Git repository](#git-repository)
   - [vim/neovim](#vimneovim)
     - [Plugins](#plugins)
   - [ML](#ml)
-  - [IC design](#ic-design) - [Verification](#verification) - [Backend](#backend) - [Protocol](#protocol)
-  <!--toc:end-->
+  - [IC design](#ic-design)
+    - [Verification](#verification)
+    - [Backend](#backend)
+    - [Protocol](#protocol)
+<!--toc:end-->
 
 ## vim/neovim
 

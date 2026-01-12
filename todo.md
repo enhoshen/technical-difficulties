@@ -343,3 +343,30 @@ Ethernet adapter 乙太網路 3:
 * conditional statement in bash
   `man bash` then search for `CONDITIONAL EXPRESSIONS` and `Compound Commands`
 * nvim option: `completeopt`
+
+* interrupted make
+  from google AI:
+  Solution: Atomic Renames
+  The recommended solution is to use atomic renames within your makefile recipes. Instead of writing directly to the final target file, write to a temporary file first, and then, upon successful completion, rename the temporary file to the final target name.
+  Renaming a file is an atomic operation for the filesystem. This ensures that the final target file is only present and has a valid timestamp if its contents are complete and correct. If the build is interrupted, only the temporary file (which make doesn't track as a target) is left in an incomplete state and will be ignored during the next run, forcing make to rerun the rule and generate the file correctly.
+  Example Implementation
+  Here is how you can modify a makefile rule to use this approach:
+
+  ```makefile
+  # Define the final target name and a temporary name
+  TARGET = my_program
+  TMP_TARGET = $(TARGET).tmp
+
+  $(TARGET): $(PREREQUISITES)
+    # 1. Build the content and direct output to a temporary file
+    $(BUILD_COMMAND) > $(TMP_TARGET)
+    # 2. Rename the temporary file to the final target name
+    mv $(TMP_TARGET) $(TARGET)
+
+  .PHONY: all clean
+
+  all: $(TARGET)
+
+  clean:
+    rm -f $(TARGET) $(TMP_TARGET)
+  ```
