@@ -1,6 +1,7 @@
 # Keywords
 
 <!--toc:start-->
+
 - [Keywords](#keywords)
   - [software engineering](#software-engineering)
   - [Math](#math)
@@ -9,10 +10,8 @@
     - [Clock/Reset](#clockreset)
   - [board design](#board-design)
   - [tool/software](#toolsoftware)
-  - [Website](#website)
-    - [For fun](#for-fun)
-      - [Hardware](#hardware)
-<!--toc:end-->
+  - [Website](#website) - [For fun](#for-fun) - [Hardware](#hardware)
+  <!--toc:end-->
 
 ## software engineering
 
@@ -25,10 +24,18 @@
 ## Math
 
 - stochastic process
+- Hough transform
+- householder transformation
+- ransac
+
+### ML
+
+- LLM rank collapse
 
 ## ICS
 
 - merged physical register file
+- verification plan/vplan
 
 ### sensor protocol
 
@@ -89,6 +96,7 @@
 ## Website
 
 ### For fun
+
 #### Hardware
 
 - [hackseter](https://www.hackster.io/)

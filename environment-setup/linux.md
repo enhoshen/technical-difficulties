@@ -1,5 +1,15 @@
 # Setting up linux environment
 
+<!--toc:start-->
+
+- [Setting up linux environment](#setting-up-linux-environment)
+  - [Upgrade glibc](#upgrade-glibc)
+    - [First:](#first)
+    - [Second:](#second)
+    - [Third:](#third)
+  - [Upgrade ubuntu](#upgrade-ubuntu)
+  <!--toc:end-->
+
 ## Upgrade glibc
 
 Newer version of `Lazyvim` asks for newer `neovim`, and newer `neovim`
@@ -66,3 +76,44 @@ Because there is literally no linux kernal header under `/home/user/usr`, not
 because we have the too-old version. Remove the `--with-headers=/home/user/usr/include`
 so it falls back to searching header under `/usr/include`. Thankfully I had
 those headers under `/usr/include`
+
+## Upgrade ubuntu
+
+Annoyingly many software requires newer glibc and I may be using `centos7` or
+`ubuntu 20.02`. In my case I need to upgrade `ubuntu` to `22.04`.
+
+I follow this [guide](https://askubuntu.com/a/1428481)
+
+```shell
+sudo apt update && sudo apt full-upgrade
+# restart wsl
+# in power shell
+wsl --terminate Ubuntu
+# in wsl
+sudo do-release-upgrade
+```
+
+and encountered following problems:
+
+- "No module named `apt_pkg`" when running `do-release-upgrade`
+  - Solved this by linking the proper `apt_pkg` shared libary
+  ```shell
+  sudo ln -s /usr/lib/python3/dist-packages/apt_pkg.cpython-38-x86_64-linux-gnu.so apt_pkg.so
+  ```
+- And while running `do-release-upgrade` it complained the python is corrupted:
+
+  ```shell
+  Can not upgrade
+
+  Your python3 install is corrupted. Please fix the '/usr/bin/python3'
+  symlink.
+  ```
+
+  - this is because I dynamic link my preferred version of python directly
+    to `/usr/bin/python3`, now you learn again and again not to do this..
+  - to fix this, link the correct system python binary back, for `Ubuntu 20.04`
+    it's `3.8`
+
+  ```shell
+  sudo ln -sf /usr/bin/python3.8 /usr/bin/python3
+  ```

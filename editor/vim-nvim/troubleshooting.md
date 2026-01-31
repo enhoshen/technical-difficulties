@@ -14,6 +14,7 @@
   - [Script doesn't take effect automatically, but you can use them directly](#script-doesnt-take-effect-automatically-but-you-can-use-them-directly)
   - [Mapping trouble shooting](#mapping-trouble-shooting)
     - [In terminal mode, have to double tap esc to send esc, otherwise it leaves terminal mode](#in-terminal-mode-have-to-double-tap-esc-to-send-esc-otherwise-it-leaves-terminal-mode)
+  - [tree-sitter needs too high version of glibc](#tree-sitter-needs-too-high-version-of-glibc)
 <!--toc:end-->
 
 ### case study
@@ -113,3 +114,33 @@ I set the keymap myself.
 So, I mapped `<esc>`,`<C-[` to `<C-\><C-n>` so of course they
 tell nvim to escape terminal mode. Also they both send the same character
 `^[` so can't set one of them to `<C-\><C-n>` and hope them behave differently.
+
+## tree-sitter needs too high version of glibc
+
+> version `GLIBC_2.39' not found (required by ./tree-sitter)
+> Updating lazyvim makes many things depends on newer version of glibc, tree-sitter
+> would be one of them. Here we try to downgrade it to v0.24
+
+As suggested by [ref](https://github.com/LazyVim/LazyVim/issues/4485#issuecomment-3691565115)
+
+```shell
+wget https://github.com/tree-sitter/tree-sitter/releases/download/v0.24.0/tree-sitter-linux-x64.gz
+gzip -d tree-sitter-linux-x64.gz
+# from here onward there may be problem
+cd tree-sitter-linux-x64
+sudo chmod +x tree-sitter
+
+mv tree-sitter ~/.local/bin/tree-sitter
+
+# check binary
+tree-sitter --version
+```
+
+, we should be good to go but there are some points to check:
+
+- I am using mason, and it will install `tree-sitter-cli` itself if it is not found
+  on the system, run `MasonUninstall tree-sitter-cli` beforehand!
+- Don't know why but `gzip -d` creates a file `tree-sitter-linux-x64` that is not
+  executable nor folder
+- I have to manually use windows goated `winrar` to manually extract the
+  `tree-sitter` binary and put it to its place.
