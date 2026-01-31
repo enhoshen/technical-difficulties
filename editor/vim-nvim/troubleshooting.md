@@ -139,8 +139,16 @@ tree-sitter --version
 , we should be good to go but there are some points to check:
 
 - I am using mason, and it will install `tree-sitter-cli` itself if it is not found
-  on the system, run `MasonUninstall tree-sitter-cli` beforehand!
+  on the system, run `:MasonUninstall tree-sitter-cli` in nvim beforehand!
 - Don't know why but `gzip -d` creates a file `tree-sitter-linux-x64` that is not
   executable nor folder
 - I have to manually use windows goated `winrar` to manually extract the
   `tree-sitter` binary and put it to its place.
+
+I got back to this and found out the `cd tree-sitter-linux-x64` instruction
+is wrong:
+```shell
+gzip -d tree-sitter-linux-x64.gz
+mv tree-sitter-linux-x64 tree-sitter
+sudo chmod +x tree-sitter
+```
