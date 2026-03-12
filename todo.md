@@ -370,3 +370,29 @@ Ethernet adapter 乙太網路 3:
   clean:
     rm -f $(TARGET) $(TMP_TARGET)
   ```
+
+* sprintf in cpp
+
+```cpp
+#include <stdio.h>
+char buffer[128];
+uint32_t number = 16;
+// store format strings to buffer using sprintf
+// output: My message: 0x10
+fprintf(buffer, "My message: 0x%x\n", number);
+```
+
+- variadic function parameters in cpp
+
+```cpp
+#include <stdio.h>
+#include <stdarg.h>
+void MySprintf(const char* format, ...)
+{
+    char buffer[128];
+    va_list args;
+    va_start(args, format);
+    vfprintf(buffer, format, args);
+    va_end(args);
+}
+```
