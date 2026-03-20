@@ -36,7 +36,7 @@
     - [Rust]()
         - [Getting Started](programming-lang/rust/getting-started.md)
 - [Resource]()
-    - [Articie](resource/articie.md)
+    - [Article](resource/article.md)
     - [Document](resource/document.md)
     - [Keywords](resource/keywords.md)
     - [Lecture](resource/lecture.md)

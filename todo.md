@@ -396,3 +396,6 @@ void MySprintf(const char* format, ...)
     va_end(args);
 }
 ```
+
+- cpp variadic arguments v.s. Pack
+- Microsoft identity platform
