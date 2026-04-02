@@ -399,3 +399,16 @@ void MySprintf(const char* format, ...)
 
 - cpp variadic arguments v.s. Pack
 - Microsoft identity platform
+- alt-pgup/pgdn to send alt-tab to windows remote desktop session if
+  shorcut keys are set to work on local machine. Combined with
+  my kanata config it would be `caps+alt+w+y/h`
+  bonus: `alt-home` opens start menu
+  [ref](https://learn.microsoft.com/en-us/windows/win32/termserv/terminal-services-shortcut-keys)
+- naming rule design:
+  Sequence of conversion to convert input into a string
+  `final = reducer(filter(transform(translate(input: Any))))`
+  - translate -> `List[List[str]]`: convert input data to a list of words
+  - transforms: rearrange, append, suffix, concat string to the list
+  - filter: List of formattor
+    - formattor(List[str]): List[str]->List[str] mapping, such as conversion to upper case
+  - reducer -> str: reduce List[List[str]] to a single string, produce the final result
