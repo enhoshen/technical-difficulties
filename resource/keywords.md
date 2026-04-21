@@ -90,8 +90,17 @@
   - TravelLogic Logic Analyzer
 - lnav
 - whisper.cpp
-- im-memory filesystem
+- in-memory filesystem
   - tmpfs
+- koharu: manga translator
+- tauri: desktop app backend framework in rust
+- faster-whisper: faster speech recognition
+  - CTranslate2: fast transformer inference engine
+- clang-tidy
+
+### web
+
+- URL-encoded form data
 
 ## Website
 

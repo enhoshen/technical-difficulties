@@ -5,6 +5,7 @@
   - [Trying to do some action but in a new tab](#trying-to-do-some-action-but-in-a-new-tab)
   - [Check startup error messages](#check-startup-error-messages)
   - [cmdline-special and expand](#cmdline-special-and-expand)
+  - [Autocompletion in dap-repl/everywhere](#autocompletion-in-dap-repleverywhere)
   - [Lua](#lua)
     - [quick lua table debug](#quick-lua-table-debug)
     - [run vim function in lua code](#run-vim-function-in-lua-code)
@@ -37,6 +38,12 @@ These special character will be expanded
 ```
 
 and the URL will be printed.
+
+## Autocompletion in dap-repl/everywhere
+
+In dap-repl/watch pane, or anywhere while in insert mode, use `ctrl-x ctrl-o`
+to bring up completion list item (rather than hitting `ctrl-n`).
+See `:help omnicompletion`.
 
 ## Lua
 

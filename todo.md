@@ -408,7 +408,7 @@ void MySprintf(const char* format, ...)
   Sequence of conversion to convert input into a string
   `final = reducer(filter(transform(translate(input: Any))))`
   - translate -> `List[List[str]]`: convert input data to a list of words
-  - transforms: rearrange, append, suffix, concat string to the list
+  - transforms: rearrange, append, suffix, concat words to the list
   - filter: List of formattor
     - formattor(List[str]): List[str]->List[str] mapping, such as conversion to upper case
   - reducer -> str: reduce List[List[str]] to a single string, produce the final result
