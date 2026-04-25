@@ -412,3 +412,92 @@ void MySprintf(const char* format, ...)
   - filter: List of formattor
     - formattor(List[str]): List[str]->List[str] mapping, such as conversion to upper case
   - reducer -> str: reduce List[List[str]] to a single string, produce the final result
+- `ssh-keygen -t rsa`, then copy public key to the ssh server:
+  - manually pasting
+  - `ssh-copy-id`
+- Permissions 0777 for '/Users/username/.ssh/id_rsa' are too open.
+  - delete IdentifyFile in `.ssh/config` and create a new one with `ssh-keygen`
+- `pip -e` editable mode failure:manually delete data under lib site packages
+- folke/sidekic.nvim, olimorris/codecompanion.nvim
+- `do while(0)` and [statement expression](https://gcc.gnu.org/onlinedocs/gcc/Statement-Exprs.html)
+
+```cpp
+// early return with do while 0
+// Source - https://stackoverflow.com/a/257421
+// Posted by Jere.Jones
+// Retrieved 2026-04-25, License - CC BY-SA 2.5
+
+do {
+  // do something
+  if (error) {
+    break;
+  }
+  // do something else
+  if (error) {
+    break;
+  }
+  // etc..
+} while (0);
+
+```
+
+```cpp
+// multi-statement in #define
+// Source - https://stackoverflow.com/a/257425
+// Posted by Greg Hewgill
+// Retrieved 2026-04-25, License - CC BY-SA 2.5
+
+#define BAR(x) { foo(x); bar(x); }
+#define FOO(x) do { foo(x); bar(x); } while (0)
+// no semicolon after BAR(x)
+// naturally put semicolon after FOO(x) call
+if (condition)
+    // BAR(x)
+    FOO(x);
+else
+    ....
+```
+
+```cpp
+// probably gcc only
+// an expression that returns _b after a series of statements
+#define maxint(a,b) \
+  ({int _a = (a), _b = (b); _a > _b ? _a : _b; })
+```
+
+```cpp
+// do while 0 that does not work
+// Source - https://stackoverflow.com/a/4627814
+// Posted by ubuntu-fanboy
+// Retrieved 2026-04-25, License - CC BY-SA 2.5
+
+
+#include <stdio.h>
+
+#define log_to_string1(str, fmt, arg...) \
+    do { \
+        sprintf(str, "%s: " fmt, "myprog", ##arg); \
+    } while (0)
+
+#define log_to_string2(str, fmt, arg...) \
+    ({ \
+        sprintf(str, "%s: " fmt, "myprog", ##arg); \
+    })
+
+int main() {
+        char buf[1000];
+        int n = 0;
+
+        log_to_string1(buf, "%s\n", "No assignment, OK");
+
+        n += log_to_string1(buf + n, "%s\n", "NOT OK: gcc: error: expected expression before 'do'");
+
+        n += log_to_string2(buf + n, "%s\n", "This fixes it");
+        n += log_to_string2(buf + n, "%s\n", "Assignment worked!");
+        printf("%s", buf);
+        return 0;
+}
+
+```
+
+[ref](https://stackoverflow.com/questions/257418/do-while-0-what-is-it-good-for)

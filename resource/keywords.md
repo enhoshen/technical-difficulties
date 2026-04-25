@@ -20,6 +20,10 @@
 - penpot: design in codes
 - Grokking system design
 - ddia: Designing Data-intensive Applications
+- ffi: foreign function interface
+- build system
+  - pypa/hatch
+  - bazel
 
 ## Math
 
