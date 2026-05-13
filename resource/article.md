@@ -21,6 +21,8 @@
 - [Writing a debugger](https://www.timdbg.com/posts/writing-a-debugger-from-scratch-part-1/)
 - [How container filesystem works](https://labs.iximiuz.com/tutorials/container-filesystem-from-scratch)
 - [performance hints by Jeff Dean](https://abseil.io/fast/hints.html)
+- [no graphics api](https://www.sebastianaaltonen.com/blog/no-graphics-api):
+  design of GPU graphics API
 
 ## IC design
 

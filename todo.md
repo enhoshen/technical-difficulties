@@ -1,11 +1,9 @@
 - Gitlab CICD
-
   - Runner level credential
   - registry service port != base service port
 
 - model module design
 - algorithm
-
   - b-tree
   - priority queue
   - minimum spanning tree
@@ -15,12 +13,10 @@
   - Splay tree
 
 - how to find bind doc in bash and bindkey in zsh
-
   - obvi, `man bash`, `man zshzle` instead of `man bind`
 
 - why can't c-q to be set as key bind in bash: https://unix.stackexchange.com/questions/72086/ctrl-s-hangs-the-terminal-emulator
 - from wsl clipboard to windows clipboard
-
   - cat clip.txt | clip.exe
   - remember to do it in a wsl session, not in a ssh session to the wsl instance
 
@@ -235,7 +231,6 @@ Ethernet adapter 乙太網路 3:
   and it's all done, no need to install the font on the remote machine.
 
 - Max/min rounds before face-off between two players
-
   - N players
   - Each round, for the left N/2 players, player i plays against player N-i (1-index)
     in other words, every players plays against the reflection of its position in the
@@ -277,32 +272,25 @@ Ethernet adapter 乙太網路 3:
   current number of player n.
 
   Now the trickiest part, computing the possible outcomes. Divide into three cases:
-
   1. a,b all on left half of the array(a,b <= N/2)
-
   - The possible number of players survive to the left of player A determines player A's
     position on the next round.
   - remember to rule out the players eliminated by a, b
   - if n is odd, the middle player must be excluded.
   - b-a-1 is the # of players possible between a and b, this number happens
     to be the ofs
-
   2. a is in the left half array, b is in the right half
-
   - a position is the same as case 1
   - b-(n/2) or b-(n+1)/2 is the b position on the left half
   - This number is the ofs.
   - Remember to eliminate A's opponent if it is also on left half and has a smaller
     position than b
-
   3. A and B are both in the right half
-
   - Treat A and B like B in case 2.
 
 * `:filter`, `:let g:`
 * `man 1 bash`, `edit-and-execute-command`
 * polars
-
   - join(on: Sequence)
   - arr.get(index)
   - str.slice
@@ -336,7 +324,6 @@ Ethernet adapter 乙太網路 3:
   conflicting key bind `<C-K>` against vim extension.
 
 * vim `:help index`
-
   - looking for list of keymaps, like it shows that `CTRL-K` is not use in tag
     `normal-index`
 
@@ -418,7 +405,7 @@ void MySprintf(const char* format, ...)
 - Permissions 0777 for '/Users/username/.ssh/id_rsa' are too open.
   - delete IdentifyFile in `.ssh/config` and create a new one with `ssh-keygen`
 - `pip -e` editable mode failure:manually delete data under lib site packages
-- folke/sidekic.nvim, olimorris/codecompanion.nvim
+- folke/sidekic.nvim, olimorris/codecompanion.nvim, carlos-algms/agentic.nvim
 - `do while(0)` and [statement expression](https://gcc.gnu.org/onlinedocs/gcc/Statement-Exprs.html)
 
 ```cpp
@@ -501,3 +488,9 @@ int main() {
 ```
 
 [ref](https://stackoverflow.com/questions/257418/do-while-0-what-is-it-good-for)
+
+- pause Wallpaper engine or don't use animated wallpaper if youtube/twitch stutters
+  hard at 60fps. This also becomes evident when it stutters while the window is not
+  focused.
+- win+ctrl-shift-b to reset graphics driver on windows
+- [ssh authentication in docker build](https://stackoverflow.com/a/42125241)
