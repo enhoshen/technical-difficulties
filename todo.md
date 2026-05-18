@@ -494,3 +494,64 @@ int main() {
   focused.
 - win+ctrl-shift-b to reset graphics driver on windows
 - [ssh authentication in docker build](https://stackoverflow.com/a/42125241)
+- chrome extension native messaging
+- python packaging
+  - [manifest.in](https://setuptools.pypa.io/en/latest/userguide/miscellaneous.html)
+  - sdist, bdist: binary distribution, source distribution
+
+- design: Data transport
+  - Stream: Transport data between two buffers
+    - write(dst, src, length)
+    - read(dst, src, length)
+    - flush
+    - implementations:
+      - local buffer -> i2c device -> remote buffer
+        - hide the detail of i2c device control, remote buffer management/address
+          alignment etc.
+
+  - Serdes/Encoder/Decoder: Convert byte payload to structured data
+    - encode(dst, src, length)
+    - decode(dst, src, length)
+    - implementations:
+      - simple cast of pointer to struct
+      - protobuf wrapper
+
+  - Client/Server
+    - request/response stream
+    - request/response encoder/decoder
+
+- find root for python package
+  - flask/helper.py
+- [OpenAPI](https://swagger.io/specification/)
+- packaging resource (cpp/cmake)
+  - compile time constant
+
+    ```cmake
+    target_compile_definitions(my_target PRIVATE
+        RESOURCE_PATH="${CMAKE_CURRENT_SOURCE_DIR}/resources/"
+    )
+    ```
+
+    ```cpp
+    std::string path = RESOURCE_PATH "image.png";
+    ```
+
+  - install rule, runtime discorvery
+    - Install Rule
+
+    ```cmake
+    install(DIRECTORY resources/ DESTINATION share/my_project/resources) to bundle them.
+    ```
+
+    - Runtime Discovery: Since C++ doesn't have a built-in "get executable path" function,
+      professionals often use libraries like whereami or platform-specific calls
+      (e.g., readlink on Linux) to find the executable's directory and then navigate to the bundled resources/ folder.
+
+  - build tree copy: bloats build folder, resource stay next to executable
+    ```cmake
+    add_custom_command(TARGET my_target POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+            ${CMAKE_CURRENT_SOURCE_DIR}/resources
+            $<TARGET_FILE_DIR:my_target>/resources
+    )
+    ```
