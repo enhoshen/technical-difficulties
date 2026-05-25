@@ -1,9 +1,11 @@
 # About GNU make
 
 <!--toc:start-->
+
 - [About GNU make](#about-gnu-make)
   - [shell command substitution used in recipe](#shell-command-substitution-used-in-recipe)
-<!--toc:end-->
+  - [@ before recipe line to disable print](#before-recipe-line-to-disable-print)
+  <!--toc:end-->
 
 ## shell command substitution used in recipe
 
@@ -26,7 +28,7 @@
 
 - Make `eval` funciton
 
-  ```makefile
+  ```make
   .PNONY: abc
   abc:
 
@@ -47,7 +49,7 @@
   ```
 
 - `ONESHELL`
-  ```makefile
+  ```make
   # every rule will be in oneshell, defeat the fundamental design of
   # enviorment seperation per recipe lines
   # .ONESHELL:
@@ -57,3 +59,17 @@
   #
   # 	@echo $${d} $(D)
   ```
+
+## @ before recipe line to disable print
+
+```make
+target:
+#this echo doesnt work since it is in the middle of a recipe
+datetime=$$(date); \
+     @echo $${datetime}/file
+
+# put it at start of the recipe
+
+@datetime=$$(date); \
+     echo $${datetime}/file
+```

@@ -24,6 +24,10 @@
 - build system
   - pypa/hatch
   - bazel
+- hardware development
+  - usbipd
+- address thread sanitizer
+  - valgrind
 
 ## Math
 
@@ -35,6 +39,7 @@
 ### ML
 
 - LLM rank collapse
+- clip llava
 
 ## ICS
 
