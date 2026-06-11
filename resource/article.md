@@ -23,6 +23,7 @@
 - [performance hints by Jeff Dean](https://abseil.io/fast/hints.html)
 - [no graphics api](https://www.sebastianaaltonen.com/blog/no-graphics-api):
   design of GPU graphics API
+- [cmake packaging](https://blog.vito.nyc/posts/cmake-pkg/)
 
 ## IC design
 

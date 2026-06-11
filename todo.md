@@ -500,9 +500,13 @@ int main() {
   - sdist, bdist: binary distribution, source distribution
 
 - design: Data transport
+  - StreamBuffer: used by stream to handle local buffers
+    - cpy(dst, src, length)
   - Stream: Transport data between two buffers
-    - write(dst, src, length)
-    - read(dst, src, length)
+    - write(dst, length)
+      - << operator overloading
+    - read(src, length)
+      - \>> operator overloading
     - flush
     - implementations:
       - local buffer -> i2c device -> remote buffer
@@ -555,3 +559,29 @@ int main() {
             $<TARGET_FILE_DIR:my_target>/resources
     )
     ```
+
+- ic modeling design
+  - bus: use bus_adapter to convert simulation object value to model layer data
+    - EX: Uint convert logic[31:0] to python int/cpp uint32
+    - bus_adapter: convert simulator frame work object handle to model layer data
+      - EX: Uint(bus_adapter=cocotb.logicarray(dut.i_clk))
+  - driver: change value of buses
+    - implementation
+      - event observer approach
+      - coroutine/iterable approach
+  - monitor: read value of buses
+  - agent
+    - channel
+      - tx: send data
+        - rdy(out) ack(in) data(out)
+      - rx: receive data
+        - rdy(in) ack(out) data(in)
+    - master/slave
+      - master
+        - combo of tx/rx
+        - actively initiate data/request/command transactions using tx
+        - receive response from rx
+      - slave
+        - combo of tx/rx
+        - passively receive data/request/command transactions from rx
+        - reactively respond using tx

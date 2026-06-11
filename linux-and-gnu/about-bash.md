@@ -1,12 +1,14 @@
 # All about Bash
 
 <!--toc:start-->
+
 - [All about Bash](#all-about-bash)
   - [What are these `&&, ||, ;, &`?](#what-are-these)
   - [Pattern matching](#pattern-matching)
     - [mixed with glob](#mixed-with-glob)
     - [Pattern matching with character classes](#pattern-matching-with-character-classes)
-<!--toc:end-->
+  - [Special Parameters](#special-parameters)
+  <!--toc:end-->
 
 ## What are these `&&, ||, ;, &`?
 
@@ -72,3 +74,9 @@ However, for whatever reason, the character class `word` doesn't work in zsh (v5
 ```
 
 see [Expansion::Filename-Expansion::Glob operators](https://zsh.sourceforge.io/Doc/Release/Expansion.html#Filename-Expansion) in zsh manual
+
+## Special Parameters
+
+`$?` returns the exit status of the last executed command. These special
+variables are called special parameters and can be found on bash manual
+[ch 3.4.2](https://www.gnu.org/software/bash/manual/html_node/Special-Parameters.html)

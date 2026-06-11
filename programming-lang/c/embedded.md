@@ -5,7 +5,8 @@
 
 ## Placement new for c calling cpp override function
 
-placement c:
+Static derived class override function is not recognized (supposedly points to
+zero) by cpp-calling c code.
 
 ```c
 #include <new>
@@ -22,9 +23,18 @@ extern "C" void foo(){
 
 Use placement new
 
+> Gemini: constructs an object at a pre-allocated memory address
+
 ```c
 extern "C" void foo(){
   new (&d) Derived();
   d.run();
 }
+```
+
+Clean up placement new object:
+
+```cpp
+// `delete obj` will be undefined behavior
+obj->~Derived(); // manual memory deallocation
 ```
