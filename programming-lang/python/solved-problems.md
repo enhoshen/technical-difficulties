@@ -1,13 +1,14 @@
 # Problem encountered and solved in Python
 
 <!--toc:start-->
+
 - [Problem encountered and solved in Python](#problem-encountered-and-solved-in-python)
   - [Shareing attributes with both getattr and getattribute](#shareing-attributes-with-both-getattr-and-getattribute)
   - [Descriptor as decorator to achieve classmethod as decorator that alters class attribute](#descriptor-as-decorator-to-achieve-classmethod-as-decorator-that-alters-class-attribute)
   - [Regsiter class as factory method in class definition with classmethod decorator](#regsiter-class-as-factory-method-in-class-definition-with-classmethod-decorator)
   - [Don't use empty list or any mutable object as default argument](#dont-use-empty-list-or-any-mutable-object-as-default-argument)
   - [Tree of ndarray](#tree-of-ndarray)
-<!--toc:end-->
+  <!--toc:end-->
 
 ## Shareing attributes with both getattr and getattribute
 
@@ -190,37 +191,25 @@ requirement:
 
 I had two implementation:
 
-- Each node has data and children. Data and each child is
-  ndarray with same shape as the parent node. To calculate slice for each level
-  and selecting either child or data will be more complex.
+- Each node has data and children. Each child is ndarray with same
+  shape as the parent node, data is just a data point. To calculate slice
+  for each level and selecting either child or data will be more complex.
+  Data are fragmented, incontiguous.
 
   ```
   Node
-  data: ndarray
-  children: Dict[str, Node]
+  data: Data
+  children: Dict[str, ndarray]
   ```
 
   ```python
-  # [][].foo[][].bar
+  # query(root is omitted): [1][2].foo[3][4].bar
   # every level of ret is an ndarray, the shape hierarchy is preserved
   # create ret with the same shape as the slice
   # each non leaf iteration
-  slice = root.children["foo"][slice]
-  for d, r in zip(slice.flat, ret.flat):
-    # assign each return element an array
-    r = d.children["bar"]
-
-  # leaf iteration
-  # recursively replace element with data array
-  for r in ret.flat:
-    # at leaf, each element will be just node
-    return_array(rr)
-  def return_array(ret):
-    if isinstance(r, Node)
-      r = r.data
-    else:
-      r = return_array(r)
-    return ret
+  foo_slice = root.children["foo"][1,2]
+  bar_slice = foo_slice.children[3,4].data
+  return bar_slice
   ```
 
   Just a bad implementation, this is just a demonstration of how you organize
@@ -237,8 +226,22 @@ I had two implementation:
   each data has to take on all ancestors shape combined
 
   Node
-  data: Data
-  children: Dict[str, ndarray]
+  data: ndarray
+  children: Dict[str, Node]
   ```
 
-  As simple as that, don't even need sample code to understand that.
+  ```python
+  # query(root is omitted): [1][2].foo[3][4].bar
+  attribute_slice = root.children["foo"].children["bar"]
+  data_slice = attribute_slice[1,2,3,4]
+  return data_slice
+  ```
+
+  note:
+
+  ```python
+  # a: np.ndarray
+  # numpy array data slicing syntax sugar is equivalent
+  # to subscription ([] operator) using tuple of slice objects
+  a[1:2, 3:4] == a [(slice(1,2), slice(3,4))]
+  ```

@@ -585,3 +585,5 @@ int main() {
         - combo of tx/rx
         - passively receive data/request/command transactions from rx
         - reactively respond using tx
+
+- [release please](https://github.com/googleapis/release-please) release automation
