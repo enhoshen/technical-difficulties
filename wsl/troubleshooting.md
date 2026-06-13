@@ -9,7 +9,8 @@
 
 ## Setup service on WSL, expose the port
 
-After setup a html server, or ssh server, we need to port forwarding from the wsl service port to the host exposed port. First route the port:
+After setup a html server, or ssh server, we need to port forwarding from the
+wsl service port to the host exposed port. First route the port:
 
 ```sh
 # on wsl
@@ -32,6 +33,9 @@ netsh interface portproxy add v4tov4 listenaddress=0.0.0.0 listenport=<expose ho
 netsh interface portproxy add v4tov4 listenport=22 listenaddress=0.0.0.0 connectport=22 connectaddress=172.31.10.56
 ```
 
+Annoyingly this may have to be done everytime the windows is rebooted, not on
+my window11 pc but on a windows10 pc at work.
+
 Then setup windows Firewall inbound rule for the port.
 
 ```
@@ -46,7 +50,7 @@ Then setup windows Firewall inbound rule for the port.
 
 Remember to change `/etc/ssh/sshd_config` if applicable:
 
-```shl
+```sh
 UsePAM yes
 PermitEmptyPasswords yes
 PermitRootLogin yes

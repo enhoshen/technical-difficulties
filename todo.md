@@ -537,7 +537,7 @@ int main() {
     ```
 
     ```cpp
-    std::string path = RESOURCE_PATH "image.png";
+    std::string path = RESOURCE_PATH "image.webp";
     ```
 
   - install rule, runtime discorvery
