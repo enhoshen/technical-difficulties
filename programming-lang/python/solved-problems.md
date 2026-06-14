@@ -12,6 +12,87 @@
 
 ## Shareing attributes with both getattr and getattribute
 
+Not sure if an anti-pattern.
+
+Say we have a manager class that holds data, and a behavior class
+that can be used across different manager class, classic composition
+, dependency-injection. The behavior needs access to the manager data
+
+```python
+class Manager:
+    def __init__(self, behavior: Behavior):
+        self.behavior.register(self)
+    def run(self):
+        self.behavior.run()
+
+class Behavior:
+    def register(self, manager: Manager):
+        self.manager = manager
+    def run(self):
+        # manipulate data in self.manager
+        self.do_something(self.manager.data)
+        ...
+```
+
+Writing `self.manager.*` to access data in the behavior object gets
+old quickly. For the most basic case of sharing all attributes
+from the manager object, we need to implement `__getattr__` for
+behavior class.
+
+When implementing `__getattr__`
+(called when attribute does not exist), if the all attributes
+lookup goes to an internal member, we have to first call the
+member's `__getattribute__` for default attribute lookup, then
+fallback to its `__getattr__`.
+
+```python
+class Behavior:
+  def __getattr__(self, k):
+      """Use everything from coupled manager object"""
+      try:
+          return self.manager.__getattribute__(k)
+      except AttributeError:
+          return self.manager.__getattr__(k)
+```
+
+**NOTE**: this kind of trick makes static code analysis tool struggle.
+You would not know where `self.abc` comes from in the `Behavior`
+class, is it from the `Behavior`? or is it from `self.manager`?
+If it is from `self.manager`, what if `self.manager` is a derived
+class of `Manager`? For instance, the most useful goto definition of the LSP
+will not be able to find the definition of `abc` attribute, and
+one has to resort to grep, search on the word `abc`.
+
+This is not a particular problem of `__getattr__` with implicit
+attribute, member lookup problem. Any composition, dependency-injection
+has this drawback where inheritance does a better job on. Usually
+I would still pick composition over inheritance despite this trade-off.
+
+```python
+def class CompA(Composition):
+    def abc(self):
+        ...
+def class CompB(Composition):
+    def abc(self):
+        ...
+composition: Composition = CompB()
+# static code analysis code will not know the definition of abc
+# maybe they will look at Composition::abc
+composition.abc()
+
+# in inheritance this
+def class InherA(inheritance):
+    def abc(self):
+        ...
+def class InherA(inheritance):
+    def abc(self):
+        ...
+inheritance: inheritance = InherA()
+# Actually I have not tested this, not sure if LSP
+# can locate InherA::abc here?
+inheritance.abc()
+```
+
 ## Descriptor as decorator to achieve classmethod as decorator that alters class attribute
 
 ```python
