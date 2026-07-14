@@ -24,6 +24,7 @@
 - [no graphics api](https://www.sebastianaaltonen.com/blog/no-graphics-api):
   design of GPU graphics API
 - [cmake packaging](https://blog.vito.nyc/posts/cmake-pkg/)
+- [webp](https://developers.google.com/speed/webp/docs/compression)
 
 ## IC design
 

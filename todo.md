@@ -587,3 +587,45 @@ int main() {
         - reactively respond using tx
 
 - [release please](https://github.com/googleapis/release-please) release automation
+
+- rtl test
+  - reset
+    - ISP frame start reset
+    - enable toggle reset
+  - protocol
+    - error
+      - iic nack
+  - interrupt + read only status
+
+- rtl case study
+  - isp debug
+    - sensor streaming
+      - frame sync signal
+      - shutdown enable signal
+    - sensor start firmware
+    - ISP connection
+    - ISP setup
+    - IRQ
+      - interrupt mask
+  - interrupt trigger after get state
+    - interrupt field a trigger > interrupt register read > interrupt field b
+      trigger > clear interrupt register by write 0 > interrupt field b is
+      unexpectedly cleared
+    - interrupt field should be individually clear-able using separate
+      control register rather than write clearing the interrupt register
+
+- static variables in function
+  - function locally variable
+  - one copy, static memory, not on stack
+  - lifetime is the entire program, as opposed to function execution of an
+    auto variable in function
+
+- c/c++ trouble shooting
+  - pass &pointer to argument that accepts pointer
+
+- [c header purpose](https://www.youtube.com/watch?v=kS_GqDp6IT4)
+  - > @SeanTBarrett: ensure declaration in header file has identical signature
+    > to definition in c file
+  - > @orbital1337: in c function signature is irrelevant for linking since
+    > there is no function overloading. Function can have same name and different
+    > signature and link successfully resulting subtle bug

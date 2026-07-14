@@ -4,12 +4,15 @@
 
 - [Keywords](#keywords)
   - [software engineering](#software-engineering)
+    - [embedded programming](#embedded-programming)
   - [Math](#math)
+    - [ML](#ml)
   - [ICS](#ics)
     - [sensor protocol](#sensor-protocol)
     - [Clock/Reset](#clockreset)
   - [board design](#board-design)
   - [tool/software](#toolsoftware)
+    - [web](#web)
   - [Website](#website) - [For fun](#for-fun) - [Hardware](#hardware)
   <!--toc:end-->
 
@@ -28,6 +31,20 @@
   - usbipd
 - address thread sanitizer
   - valgrind
+- build system
+  - pcons
+- ui
+  - c++
+    - imgui
+
+### Concept
+
+- discriminated union
+- bit proxy
+
+### embedded programming
+
+- newlib: embedded c library
 
 ## Math
 
@@ -106,6 +123,7 @@
 - faster-whisper: faster speech recognition
   - CTranslate2: fast transformer inference engine
 - clang-tidy
+- [obs studio scripting](https://docs.obsproject.com/scripting)
 
 ### web
 
