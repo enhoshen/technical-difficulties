@@ -4,6 +4,8 @@
 
 - [Article](#article)
   - [ML](#ml)
+  - [Programming language](#programming-language)
+    - [C/C++](#cc)
   - [Software engineering](#software-engineering)
   - [IC design](#ic-design)
     - [Verification](#verification)
@@ -15,6 +17,13 @@
 
 - [MLA in Deepseek](https://zhuanlan.zhihu.com/p/25529542567)
 - [Inside vLLM](https://www.aleksagordic.com/blog/vllm)
+
+## Programming language
+
+### C/C++
+
+- [tips for cpp devs](https://gasparvardanyan.github.io/blog/tips-for-cpp-developers/)
+- [c++ core guidelines](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines)
 
 ## Software engineering
 
@@ -30,7 +39,7 @@
 
 ### Verification
 
-- [RISC-V Micro-Architectural Verification](https://semiengineering.com/risc-v-micro-architectural-verification/?fbclid=IwAR2RPK35sSGj5aExWJSXT8UQiGjpyicfBeEI2ctPWt0F9rrjKMU8jqm_voo)
+- [RISC-V Micro-Architectural Verification](https://semiengineering.com/risc-v-micro-architectural-verification/?fbclid=IwAR2RPK35sSGj5aExWJSXT8UQiGjpyicfBeEI2ctPWt0F9rrjKMU8jqm_voo)k:V
 
 ### Async
 

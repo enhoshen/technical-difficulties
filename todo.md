@@ -613,6 +613,7 @@ int main() {
       unexpectedly cleared
     - interrupt field should be individually clear-able using separate
       control register rather than write clearing the interrupt register
+  - don't test GPIO with them fucking floating
 
 - static variables in function
   - function locally variable
@@ -629,3 +630,17 @@ int main() {
   - > @orbital1337: in c function signature is irrelevant for linking since
     > there is no function overloading. Function can have same name and different
     > signature and link successfully resulting subtle bug
+
+- cmake
+  - cmake toolchain file
+  - cmake-presets
+  - CMAKE\_<LANG>\_COMPILER
+  - [cmake-toolchains](https://cmake.org/cmake/help/latest/manual/cmake-toolchains.7.html#id9)
+
+- obs c library
+  - [obs-video-gpu-encode.c](https://github.com/obsproject/obs-studio/blob/master/libobs/obs-video-gpu-encode.c)
+
+- memory allocator
+  - [memory pool by hoff.\_world](https://www.youtube.com/watch?v=Ct2GdRoPIfM)
+
+- .git/info/exclude for non-tracked git ignored list

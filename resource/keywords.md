@@ -1,9 +1,11 @@
 # Keywords
 
 <!--toc:start-->
-
 - [Keywords](#keywords)
+  - [Programming language](#programming-language)
+    - [C/C++](#cc)
   - [software engineering](#software-engineering)
+    - [Concept](#concept)
     - [embedded programming](#embedded-programming)
   - [Math](#math)
     - [ML](#ml)
@@ -13,8 +15,17 @@
   - [board design](#board-design)
   - [tool/software](#toolsoftware)
     - [web](#web)
-  - [Website](#website) - [For fun](#for-fun) - [Hardware](#hardware)
-  <!--toc:end-->
+  - [Website](#website)
+    - [For fun](#for-fun)
+      - [Hardware](#hardware)
+<!--toc:end-->
+
+## Programming language
+
+### C/C++
+
+- enum class: scoped enum, namespace-ed enum
+- designated initializer: valid for struct, invalid for array c++20 onward
 
 ## software engineering
 
@@ -41,6 +52,9 @@
 
 - discriminated union
 - bit proxy
+- exception safety:
+  fully success or failure, no intermediate state, no skipped clean up
+  code causing resource leakage
 
 ### embedded programming
 

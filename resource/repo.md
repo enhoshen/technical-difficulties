@@ -4,6 +4,7 @@
 - [Git repository](#git-repository)
   - [vim/neovim](#vimneovim)
     - [Plugins](#plugins)
+  - [Software engineering](#software-engineering)
   - [ML](#ml)
   - [IC design](#ic-design)
     - [Verification](#verification)
@@ -16,6 +17,10 @@
 ### Plugins
 
 - [opencode.nvim](https://github.com/NickvanDyke/opencode.nvim)
+
+## Software engineering
+
+- [system design note](https://github.com/liquidslr/system-design-notes)
 
 ## ML
 
