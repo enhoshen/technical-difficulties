@@ -33,6 +33,7 @@
         - [Embedded](programming-lang/c/embedded.md)
     - [Cmake]()
         - [Command Note](programming-lang/cmake/command-note.md)
+        - [Variable Note](programming-lang/cmake/variable-note.md)
     - [Lua]()
         - [Tips](programming-lang/lua/tips.md)
         - [Tracing Code](programming-lang/lua/tracing-code.md)
