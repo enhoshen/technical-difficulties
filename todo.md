@@ -644,3 +644,37 @@ int main() {
   - [memory pool by hoff.\_world](https://www.youtube.com/watch?v=Ct2GdRoPIfM)
 
 - .git/info/exclude for non-tracked git ignored list
+- rule of five case study
+
+```cpp
+~Foo (){
+  delete ptr_;
+}
+void Func(Foo foo) {...}
+// double free
+Foo foo();
+Func(foo);
+Func(foo);
+// in my case I need pass by reference
+void Func(Foo& foo) {...}
+Func(foo);
+Func(foo);
+// besides, use smart pointer and w/o destructor
+class Foo {
+private:
+  std::unique_ptr<T> ptr_;
+}
+```
+
+- `sizeof` on array input in a function
+
+```cpp
+// 32b matchine
+void Func(int arr[]) {
+  assert sizeof() == 4;
+}
+int arr [6] {};
+// arr decays into pointer inside a function
+// sizeof(arr) in Func is not 6
+Func(arr)
+```
